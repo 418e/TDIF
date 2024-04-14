@@ -1,0 +1,4 @@
+name: str = "john";
+surname: str = "doe";
+age: int = 24;
+id: int = 1234;

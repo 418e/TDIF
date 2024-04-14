@@ -1,0 +1,17 @@
+{
+  "name": "tdif",
+  "version": "0.0.1",
+  "description": "typed data interchange format",
+  "scripts": {
+    "start": "tsc src/index.ts --outDir out --watch",
+    "build": "tsc src/index.ts --outDir out"
+  },
+  "author": "418e",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@types/node": "^20.12.7"
+  }
+}
