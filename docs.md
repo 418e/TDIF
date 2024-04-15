@@ -3,9 +3,9 @@
 ## syntax
 
 ```ts
-key1: type1 = value1;
-key2: type2 = value2;
-key3: type3 = value3;
+type1 key1 = value1
+type2 key2 = value2
+type3 key3 = value3
 ```
 
 ## API
@@ -41,7 +41,7 @@ edit(file, "name", "john");
 
 ## Type System
 
-TDIF only has 5 types so far: `str`, `int`, `unt`, `float`, and `num`. The type system always checks if the types of the key and value align with each other and throws an error if something goes wrong, ensuring the type-safe development.
+TDIF only has 8 types, all of which are listed below. The type system always checks if the types of the key and value align with each other and throws an error if something goes wrong, ensuring the type-safe development.
 
 ### Types
 
@@ -50,3 +50,6 @@ TDIF only has 5 types so far: `str`, `int`, `unt`, `float`, and `num`. The type 
 - `unt`: unsigned integer (below 0)
 - `float`: floating point number (non-whole numbers)
 - `num`: javascript number type
+- `bool`: javascript boolean type
+- `true`: true
+- `false`: false

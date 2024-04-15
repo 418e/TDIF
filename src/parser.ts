@@ -7,29 +7,31 @@ export default function parse(content: string): TDIFData {
 
   lines.forEach((line) => {
     const trimmed = line.trim();
-    const colonIndex = trimmed.indexOf(":");
+    const spaceIndex = trimmed.indexOf(" ");
     const equalsIndex = trimmed.indexOf("=");
-    const semicolonIndex = trimmed.indexOf(";");
 
-    if (colonIndex !== -1 && equalsIndex !== -1 && semicolonIndex !== -1) {
-      const key = trimmed.substring(0, colonIndex).trim();
-      const type = trimmed.substring(colonIndex + 1, equalsIndex).trim();
-      const value = trimmed.substring(equalsIndex + 1, semicolonIndex).trim();
+    if (spaceIndex !== -1 && equalsIndex !== -1) {
+      const type = trimmed.substring(0, spaceIndex).trim();
+      const key = trimmed.substring(spaceIndex + 1, equalsIndex).trim();
+      const value = trimmed.substring(equalsIndex + 1).trim();
       let parsedValue: TDIFLiteralType = null;
 
       if (type === "str") {
         typeCheck(value, type);
         parsedValue = value.slice(1, -1);
-      } else if (
-        type === "int" ||
-        type === "unt" ||
-        type === "num"
-      ) {
+      } else if (type === "int" || type === "unt" || type === "num") {
         typeCheck(value, type);
         parsedValue = parseInt(value, 10);
       } else if (type === "float") {
         typeCheck(value, type);
         parsedValue = parseFloat(value);
+      } else if (type === "bool" || type === "true" || type === "false") {
+        if (value === "true" || value === "false") {
+          typeCheck(JSON.parse(value), type);
+          parsedValue = JSON.parse(value);
+        } else {
+          // invalid boolean operator
+        }
       }
 
       data[key] = {

@@ -1,6 +1,15 @@
-export type TDIFLiteralType = string | number | null;
+export type TDIFLiteralType = string | number | boolean | true | false | null;
 
-export type TDIFType = "str" | "int" | "unt" | "float" | "num" | string;
+export type TDIFType =
+  | "str"
+  | "int"
+  | "unt"
+  | "float"
+  | "num"
+  | "bool"
+  | "true"
+  | "false"
+  | string;
 
 export type TDIFObject = {
   value: TDIFLiteralType;

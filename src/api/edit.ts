@@ -18,7 +18,7 @@ import { FileMeta, TDIFLiteralType, TDIFObject } from "../types";
  * edit(file, "name", "luke");
  * ```
  *
- * @version v0.0.1
+ * @version v0.0.3
  */
 export default function edit(
   file: FileMeta,
@@ -35,7 +35,7 @@ export default function edit(
   const newContent = Object.entries(data)
     .map(
       ([k, v]: [string, TDIFObject]) =>
-        `${k}: ${v.type} = ${
+        `${v.type} ${k} = ${
           typeof v.value === "string" ? `"${v.value}"` : v.value
         };`
     )

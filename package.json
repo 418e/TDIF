@@ -7,7 +7,7 @@
     "build": "tsc src/index.ts --outDir out"
   },
   "author": "418e",
-  "license": "MIT",
+  "license": "GPL-2.0 license",
   "devDependencies": {
     "typescript": "^5.4.5"
   },

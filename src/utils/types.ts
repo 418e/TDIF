@@ -10,7 +10,10 @@ export function typeCheck(value: TDIFLiteralType, type: TDIFType) {
   let valueType = typeof value;
   if (valueType === "string" && !isNaN(Number(value))) {
     valueType = "number";
+  } else if (valueType === "boolean") {
+    valueType = "boolean";
   }
+
   switch (type) {
     case "str":
       if (valueType !== "string") {
@@ -44,6 +47,21 @@ export function typeCheck(value: TDIFLiteralType, type: TDIFType) {
       break;
     case "num":
       if (valueType !== "number") {
+        typeError(type);
+      }
+      break;
+    case "bool":
+      if (valueType !== "boolean") {
+        typeError(type);
+      }
+      break;
+    case "true":
+      if (valueType !== "boolean" || value !== true) {
+        typeError(type);
+      }
+      break;
+    case "false":
+      if (valueType !== "boolean" || value !== false) {
         typeError(type);
       }
       break;
