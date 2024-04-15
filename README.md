@@ -1,4 +1,4 @@
-# Typed Data Interchange Format - TDIF
+# Typed Data Interchange and Serialization Format - TDIF
 
 **TDIF** is data interchange format, designed with type-safety in mind. TDIF's goal is to enhance developer experience and introduce type system inside DIFs. Syntax is designed to be as easy to read as it is to write.
 
