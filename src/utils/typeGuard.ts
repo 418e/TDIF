@@ -12,11 +12,12 @@ export function implStrValue(value: TDIFValue<any>): TDIFValue<string> | null {
 }
 
 export function isIntValue(value: TDIFValue<any>): value is TDIFValue<number> {
+  let parsed = JSON.parse(value.value);
   return (
-    typeof value.value === "number" &&
+    typeof parsed === "number" &&
     value.type === "int" &&
-    value.value >= 0 &&
-    Number.isInteger(value.value)
+    parsed >= 0 &&
+    Number.isInteger(parsed)
   );
 }
 
@@ -28,11 +29,12 @@ export function implIntValue(value: TDIFValue<any>): TDIFValue<number> | null {
 }
 
 export function isUntValue(value: TDIFValue<any>): value is TDIFValue<number> {
+  let parsed = JSON.parse(value.value);
   return (
-    typeof typeof value.value === "number" &&
+    typeof parsed === "number" &&
     value.type === "unt" &&
-    value.value < 0 &&
-    Number.isInteger(value.value)
+    parsed < 0 &&
+    Number.isInteger(parsed)
   );
 }
 
@@ -44,7 +46,8 @@ export function implUntValue(value: TDIFValue<any>): TDIFValue<number> | null {
 }
 
 export function isNumValue(value: TDIFValue<any>): value is TDIFValue<number> {
-  return typeof value.value === "number" && value.type === "num";
+  let parsed = JSON.parse(value.value);
+  return typeof parsed === "number" && value.type === "num";
 }
 
 export function implNumValue(value: TDIFValue<any>): TDIFValue<number> | null {
@@ -57,10 +60,11 @@ export function implNumValue(value: TDIFValue<any>): TDIFValue<number> | null {
 export function isFloatValue(
   value: TDIFValue<any>
 ): value is TDIFValue<number> {
+  let parsed = JSON.parse(value.value);
   return (
-    typeof value.value === "number" &&
+    typeof parsed === "number" &&
     value.type === "float" &&
-    !Number.isInteger(value.value)
+    !Number.isInteger(parsed)
   );
 }
 
@@ -76,7 +80,8 @@ export function implFloatValue(
 export function isBoolValue(
   value: TDIFValue<any>
 ): value is TDIFValue<boolean> {
-  return typeof value.value === "boolean" && value.type === "bool";
+  let parsed = JSON.parse(value.value);
+  return typeof parsed === "boolean" && value.type === "bool";
 }
 
 export function implBoolValue(
@@ -91,10 +96,9 @@ export function implBoolValue(
 export function isTrueValue(
   value: TDIFValue<any>
 ): value is TDIFValue<boolean> {
+  let parsed = JSON.parse(value.value);
   return (
-    typeof value.value === "boolean" &&
-    value.type === "bool" &&
-    value.value === true
+    typeof parsed === "boolean" && value.type === "bool" && parsed === true
   );
 }
 
@@ -110,10 +114,9 @@ export function implTrueValue(
 export function isFalseValue(
   value: TDIFValue<any>
 ): value is TDIFValue<boolean> {
+  let parsed = JSON.parse(value.value);
   return (
-    typeof value.value === "boolean" &&
-    value.type === "bool" &&
-    value.value === true
+    typeof parsed === "boolean" && value.type === "bool" && parsed === true
   );
 }
 

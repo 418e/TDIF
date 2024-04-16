@@ -15,23 +15,16 @@ export default function parse(content: string): TDIFData {
       const key = trimmed.substring(spaceIndex + 1, equalsIndex).trim();
       const value = trimmed.substring(equalsIndex + 1).trim();
       let parsedValue: any = null;
+      typeCheck({ value, type });
 
       if (type === "str") {
-        typeCheck({ value, type });
         parsedValue = value.slice(1, -1);
       } else if (type === "int" || type === "unt" || type === "num") {
-        typeCheck({ value, type });
         parsedValue = parseInt(value, 10);
       } else if (type === "float") {
-        typeCheck({ value, type });
         parsedValue = parseFloat(value);
       } else if (type === "bool" || type === "true" || type === "false") {
-        if (value === "true" || value === "false") {
-          typeCheck({ value, type });
-          parsedValue = JSON.parse(value);
-        } else {
-          // invalid boolean operator
-        }
+        parsedValue = JSON.parse(value);
       }
 
       data[key] = {

@@ -13,7 +13,9 @@ import {
 
 export default function typeCheck(value: TDIFValue<any>) {
   function typeError(T: TDIFType) {
-    console.error(`\x1b[31minvalid value (${value}): expected "${T}"\x1b[0m`);
+    console.error(
+      `\x1b[31munexpected type for ${value.value}: ${T}\x1b[0m`
+    );
     exit(1);
   }
 
@@ -57,6 +59,10 @@ export default function typeCheck(value: TDIFValue<any>) {
       if (!isFalseValue(value)) {
         typeError(value.type);
       }
+      break;
+    default:
+      console.error(`\x1b[31minvalid type: ${value.type}\x1b[0m`);
+      exit(1);
       break;
   }
 }

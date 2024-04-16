@@ -4,33 +4,29 @@ import { FileMeta } from "../types";
  *
  * @param {FileMeta} file - The path to the TDIF file.
  * @param {string} msg
- * @param {() => boolean} expr
+ * @param {boolean} expr
  * @returns {void}
  *
  * @example
  * ```ts
- * import {read, rules} frin "tdif";
+ * import {read, test} frin "tdif";
  * import { implIntValue, isIntValue } from "tdif/utils";
  *
  * const file = read("user.tdif");
  * let age = file.data["age"];
- * rules.add(file, "age is more than 18", isIntValue(age) && implIntValue(age)!?.value > 18);
+ * test(file, "age is more than 18", isIntValue(age) && implIntValue(age)!?.value > 18);
  * ```
  *
- * @version v0.0.4
+ * @version v0.0.5
  */
-function add(file: FileMeta, msg: string, expr: boolean) {
+export default function test(file: FileMeta, msg: string, expr: boolean): void {
   file.rules.push({
     msg,
     expr,
   });
   if (!expr) {
-    console.error(`\x1b[31m❌ | rule "${msg}": failure\x1b[0m`);
+    console.error(`\x1b[31m❌ | failed: "${msg}"\x1b[0m`);
   } else {
-    console.log(`\x1b[32m✅ | rule "${msg}": success\x1b[0m`);
+    console.log(`\x1b[32m✅ | success "${msg}"\x1b[0m`);
   }
 }
-const rules = {
-  add,
-};
-export default rules;

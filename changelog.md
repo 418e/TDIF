@@ -1,3 +1,9 @@
+# v0.0.5 - 16/04/2024
+
+- added `readAsync`
+- changed `rules.add()` to `test()`
+- fixed typeGuard not parsing the values
+
 # v0.0.4 - 16/04/2024
 
 - updated type system and safety
