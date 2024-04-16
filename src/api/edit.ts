@@ -1,5 +1,5 @@
 import { writeFileSync } from "fs";
-import typeCheck from "../utils/typeCheck";
+import typeCheck from "../type_system/typeCheck";
 import { FileMeta, TDIFValue } from "../types";
 /**
  * @param {FileMeta} file

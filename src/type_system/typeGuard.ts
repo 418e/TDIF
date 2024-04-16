@@ -128,3 +128,23 @@ export function implFalseValue(
   }
   return null;
 }
+
+export function isArrayValue<T>(
+  value: TDIFValue<any>
+): value is TDIFValue<T[]> {
+  let parsed = JSON.parse(value.value);
+  return (
+    typeof parsed === "object" &&
+    Array.isArray(parsed) &&
+    value.type.trim().endsWith("[]")
+  );
+}
+
+export function implArrayValue<T>(
+  value: TDIFValue<any>
+): TDIFValue<T[]> | null {
+  if (isArrayValue<T>(value)) {
+    return value;
+  }
+  return null;
+}

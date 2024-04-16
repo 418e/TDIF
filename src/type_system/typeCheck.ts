@@ -1,6 +1,7 @@
 import { exit } from "process";
 import { TDIFType, TDIFValue } from "../types";
 import {
+  isArrayValue,
   isBoolValue,
   isFalseValue,
   isFloatValue,
@@ -13,9 +14,7 @@ import {
 
 export default function typeCheck(value: TDIFValue<any>) {
   function typeError(T: TDIFType) {
-    console.error(
-      `\x1b[31munexpected type for ${value.value}: ${T}\x1b[0m`
-    );
+    console.error(`\x1b[31munexpected type for ${value.value}: ${T}\x1b[0m`);
     exit(1);
   }
 
@@ -61,8 +60,23 @@ export default function typeCheck(value: TDIFValue<any>) {
       }
       break;
     default:
-      console.error(`\x1b[31minvalid type: ${value.type}\x1b[0m`);
-      exit(1);
-      break;
+      if (value.type.trim().endsWith("[]")) {
+        let arrType = value.type.trim().slice(0, -2);
+        if (!isArrayValue(value)) {
+          typeError(value.type);
+        } else {
+          (JSON.parse(value.value as unknown as string) as unknown[]).forEach(
+            (item) => {
+              typeCheck({
+                value: item,
+                type: arrType,
+              });
+            }
+          );
+        }
+      } else {
+        console.error(`\x1b[31minvalid type: ${value.type}\x1b[0m`);
+        exit(1);
+      }
   }
 }

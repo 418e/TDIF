@@ -1,6 +1,6 @@
 {
   "name": "tdif",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "typed data interchange and serialization format",
   "scripts": {
     "start": "tsc src/index.ts --outDir out --watch",

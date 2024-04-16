@@ -1,3 +1,7 @@
+# v0.0.6 - 16/04/2024
+
+- added array types (`T[]`)
+
 # v0.0.5 - 16/04/2024
 
 - added `readAsync`

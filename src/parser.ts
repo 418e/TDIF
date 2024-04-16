@@ -1,5 +1,5 @@
 import { TDIFData } from "./types";
-import typeCheck from "./utils/typeCheck";
+import typeCheck from "./type_system/typeCheck";
 
 export default function parse(content: string): TDIFData {
   const lines = content.split("\n");
@@ -23,7 +23,7 @@ export default function parse(content: string): TDIFData {
         parsedValue = parseInt(value, 10);
       } else if (type === "float") {
         parsedValue = parseFloat(value);
-      } else if (type === "bool" || type === "true" || type === "false") {
+      } else {
         parsedValue = JSON.parse(value);
       }
 

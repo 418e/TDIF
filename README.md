@@ -13,7 +13,9 @@ Just like JSON, TDIF has keys and values, but also introduces types and makes wr
   "name": "john",
   "surname": "doe",
   "age": 24,
-  "id": 1234
+  "isAdult": true,
+  "id": 1234,
+  "mails": ["johndoe@example.com", "johndoe1@example.com"]
 }
 ```
 
@@ -21,7 +23,9 @@ Just like JSON, TDIF has keys and values, but also introduces types and makes wr
 str name = "john"
 str surname = "doe"
 int age = 24
+bool isAdult = true
 int id = 1234
+str[] mails = ["johndoe@example.com", "johndoe1@example.com"]
 ```
 
 ## language support
