@@ -1,14 +1,14 @@
 import { writeFileSync } from "fs";
-import { typeCheck } from "../utils/types";
-import { FileMeta, TDIFLiteralType, TDIFObject } from "../types";
+import typeCheck from "../utils/typeCheck";
+import { FileMeta, TDIFValue } from "../types";
 /**
  * @param {FileMeta} file
  * file you would like to edit
  * @param {string} key
  * name of the key you would like to edit
- * @param {TDIFLiteralType} newValue
+ * @param {any} newValue
  * new value of the you would like to edit
- * @returns `void`
+ * @returns {void}
  *
  * @example
  * ```ts
@@ -18,23 +18,20 @@ import { FileMeta, TDIFLiteralType, TDIFObject } from "../types";
  * edit(file, "name", "luke");
  * ```
  *
- * @version v0.0.3
+ * @version v0.0.4
  */
-export default function edit(
-  file: FileMeta,
-  key: string,
-  newValue: TDIFLiteralType
-): void {
+export default function edit(file: FileMeta, key: string, newValue: any): void {
   let data = file.data;
-  data[key] = {
+  const newObj = {
     value: newValue,
     type: data[key].type,
   };
-  typeCheck(newValue, data[key].type);
+  data[key] = newObj;
+  typeCheck(newObj);
 
   const newContent = Object.entries(data)
     .map(
-      ([k, v]: [string, TDIFObject]) =>
+      ([k, v]: [string, TDIFValue<any>]) =>
         `${v.type} ${k} = ${
           typeof v.value === "string" ? `"${v.value}"` : v.value
         };`

@@ -1,5 +1,5 @@
-import { TDIFData, TDIFLiteralType } from "./types";
-import { typeCheck } from "./utils/types";
+import { TDIFData } from "./types";
+import typeCheck from "./utils/typeCheck";
 
 export default function parse(content: string): TDIFData {
   const lines = content.split("\n");
@@ -14,20 +14,20 @@ export default function parse(content: string): TDIFData {
       const type = trimmed.substring(0, spaceIndex).trim();
       const key = trimmed.substring(spaceIndex + 1, equalsIndex).trim();
       const value = trimmed.substring(equalsIndex + 1).trim();
-      let parsedValue: TDIFLiteralType = null;
+      let parsedValue: any = null;
 
       if (type === "str") {
-        typeCheck(value, type);
+        typeCheck({ value, type });
         parsedValue = value.slice(1, -1);
       } else if (type === "int" || type === "unt" || type === "num") {
-        typeCheck(value, type);
+        typeCheck({ value, type });
         parsedValue = parseInt(value, 10);
       } else if (type === "float") {
-        typeCheck(value, type);
+        typeCheck({ value, type });
         parsedValue = parseFloat(value);
       } else if (type === "bool" || type === "true" || type === "false") {
         if (value === "true" || value === "false") {
-          typeCheck(JSON.parse(value), type);
+          typeCheck({ value, type });
           parsedValue = JSON.parse(value);
         } else {
           // invalid boolean operator
@@ -36,7 +36,7 @@ export default function parse(content: string): TDIFData {
 
       data[key] = {
         value: parsedValue,
-        type: type,
+        type,
       };
     }
   });

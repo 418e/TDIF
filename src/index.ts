@@ -1,5 +1,4 @@
 import edit from "./api/edit";
 import read from "./api/read";
-export default { read, edit };
-
-console.log(read("example.tdif"));
+import rules from "./api/rule";
+export default { read, edit, rules };

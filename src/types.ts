@@ -1,5 +1,3 @@
-export type TDIFLiteralType = string | number | boolean | true | false | null;
-
 export type TDIFType =
   | "str"
   | "int"
@@ -11,16 +9,22 @@ export type TDIFType =
   | "false"
   | string;
 
-export type TDIFObject = {
-  value: TDIFLiteralType;
-  type: TDIFType;
-};
-
 export interface TDIFData {
-  [key: string]: TDIFObject;
+  [key: string]: TDIFValue<any>;
+}
+
+export interface Rule {
+  msg: string;
+  expr: boolean;
 }
 
 export interface FileMeta {
   data: TDIFData;
   path: string;
+  rules: Rule[];
 }
+
+export type TDIFValue<T> = {
+  value: T;
+  type: TDIFType;
+};

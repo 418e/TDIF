@@ -15,12 +15,13 @@ import { FileMeta } from "../types";
  * console.log(file.data);
  * ```
  *
- * @version v0.0.1
+ * @version v0.0.4
  */
 export default function read(filePath: string): FileMeta {
   const content = readFileSync(filePath, "utf-8");
   return {
     data: parse(content),
     path: filePath,
+    rules: []
   };
 }

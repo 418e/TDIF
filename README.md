@@ -26,7 +26,11 @@ int id = 1234
 
 ## language support
 
-We are planning to give TDIF support to the major languages such as javascript, rust, c/c++ or python. For documentation visit [`docs.md`](docs.md)
+We are planning to give TDIF support to the major languages such as javascript, rust, c/c++ or python.
+
+### Javascript / Typescript
+
+under the development
 
 ## extension
 
