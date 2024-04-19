@@ -1,6 +1,0 @@
-str name = "luke"
-str surname = "doe"
-int age = 24
-bool isAdult = true
-float balance = 123.4
-str[] mails = ["johndoe@example.com", "johndoe1@example.com"]

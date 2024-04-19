@@ -1,3 +1,7 @@
+# v0.0.7 - 16/04/2024
+
+- added object type
+
 # v0.0.6 - 16/04/2024
 
 - added array types (`T[]`)

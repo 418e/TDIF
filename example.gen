@@ -1,0 +1,5 @@
+obj data
+    int count = 1
+    str name = "lorem"
+str test = "ipsum" 
+int[] list = [1, 2]

@@ -2,16 +2,16 @@ import { readFileSync } from "fs";
 import parse from "../parser";
 import { FileMeta } from "../types";
 /**
- * Reads a TDIF file and returns its content along with metadata.
+ * Reads a Genus file and returns its content along with metadata.
  *
- * @param {string} filePath - The path to the TDIF file.
+ * @param {string} filePath - The path to the Genus file.
  * @returns {FileMeta} An object containing the file's data and path.
  *
  * @example
  * ```ts
- * import {read} frin "tdif";
+ * import {read} frin "genus-format";
  *
- * const file = read("user.tdif");
+ * const file = read("user.gen");
  * console.log(file.data);
  * ```
  *
@@ -22,6 +22,6 @@ export default function read(filePath: string): FileMeta {
   return {
     data: parse(content),
     path: filePath,
-    rules: []
+    rules: [],
   };
 }

@@ -1,45 +1,33 @@
-# Typed Data Interchange and Serialization Format - TDIF
+# Genus Format
 
-**TDIF** is data interchange format, designed with type-safety in mind. TDIF's goal is to enhance developer experience and introduce type system inside DIFs. Syntax is designed to be as easy to read as it is to write.
+Genus Format is a data interchange and serialization format designed with type-safety in mind. It aims to enhance developer experience by introducing a type system inside Data Interchange Formats (DIFs). The syntax is designed to be easy to read and write.
 
-_TDIF is in the early stage of development, contributions are welcome_
+## Features
 
-## comparasion to json
+- **Type-Safe**: Introduces a type system to ensure data integrity and safety.
+- **Easy to Read and Write**: Designed for simplicity and ease of use.
+- **Developer-Friendly**: Aims to improve the developer experience with error handling mechanisms.
 
-Just like JSON, TDIF has keys and values, but also introduces types and makes writing data easier than ever. TDIF libraries also make it easy to read and manipulate data, while also type checking and handling errors
-
-```json
-{
-  "name": "john",
-  "surname": "doe",
-  "age": 24,
-  "isAdult": true,
-  "id": 1234,
-  "mails": ["johndoe@example.com", "johndoe1@example.com"]
-}
-```
-
-```ts
-str name = "john"
-str surname = "doe"
-int age = 24
-bool isAdult = true
-int id = 1234
-str[] mails = ["johndoe@example.com", "johndoe1@example.com"]
-```
-
-## language support
-
-We are planning to give TDIF support to the major languages such as javascript, rust, c/c++ or python.
-
-### Javascript / Typescript
-
-under the development
-
-## extension
+## Installation
 
 soon
 
-## documentation
+## Examples
 
-soon
+```
+obj user
+    str name = "john"
+    str surname = "doe"
+    int age = 24
+    str[] emails = ["jonhdoe@example.com"]
+int file_id = 1234
+int[] list = [1, 2, 3, 4]
+```
+
+## License
+
+Genus Format is licensed under the GPL-2.0 license. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any questions or support, please open an issue on GitHub.

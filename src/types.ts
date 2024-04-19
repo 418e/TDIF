@@ -1,4 +1,4 @@
-export type TDIFType =
+export type GenusType =
   | "str"
   | "int"
   | "unt"
@@ -9,8 +9,8 @@ export type TDIFType =
   | "false"
   | string;
 
-export interface TDIFData {
-  [key: string]: TDIFValue<any>;
+export interface GenusData {
+  [key: string]: GenusValue<any>;
 }
 
 export interface Rule {
@@ -19,12 +19,12 @@ export interface Rule {
 }
 
 export interface FileMeta {
-  data: TDIFData;
+  data: GenusData;
   path: string;
   rules: Rule[];
 }
 
-export type TDIFValue<T> = {
+export type GenusValue<T> = {
   value: T;
-  type: TDIFType;
+  type: GenusType;
 };

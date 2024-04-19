@@ -1,17 +1,23 @@
-import { TDIFValue } from "../types";
+import { GenusValue } from "../types";
 
-export function isStrValue(value: TDIFValue<any>): value is TDIFValue<string> {
+export function isStrValue(
+  value: GenusValue<any>
+): value is GenusValue<string> {
   return value.type === "str";
 }
 
-export function implStrValue(value: TDIFValue<any>): TDIFValue<string> | null {
+export function implStrValue(
+  value: GenusValue<any>
+): GenusValue<string> | null {
   if (isStrValue(value)) {
     return value;
   }
   return null;
 }
 
-export function isIntValue(value: TDIFValue<any>): value is TDIFValue<number> {
+export function isIntValue(
+  value: GenusValue<any>
+): value is GenusValue<number> {
   let parsed = JSON.parse(value.value);
   return (
     typeof parsed === "number" &&
@@ -21,14 +27,18 @@ export function isIntValue(value: TDIFValue<any>): value is TDIFValue<number> {
   );
 }
 
-export function implIntValue(value: TDIFValue<any>): TDIFValue<number> | null {
+export function implIntValue(
+  value: GenusValue<any>
+): GenusValue<number> | null {
   if (isIntValue(value)) {
     return value;
   }
   return null;
 }
 
-export function isUntValue(value: TDIFValue<any>): value is TDIFValue<number> {
+export function isUntValue(
+  value: GenusValue<any>
+): value is GenusValue<number> {
   let parsed = JSON.parse(value.value);
   return (
     typeof parsed === "number" &&
@@ -38,19 +48,25 @@ export function isUntValue(value: TDIFValue<any>): value is TDIFValue<number> {
   );
 }
 
-export function implUntValue(value: TDIFValue<any>): TDIFValue<number> | null {
+export function implUntValue(
+  value: GenusValue<any>
+): GenusValue<number> | null {
   if (isUntValue(value)) {
     return value;
   }
   return null;
 }
 
-export function isNumValue(value: TDIFValue<any>): value is TDIFValue<number> {
+export function isNumValue(
+  value: GenusValue<any>
+): value is GenusValue<number> {
   let parsed = JSON.parse(value.value);
   return typeof parsed === "number" && value.type === "num";
 }
 
-export function implNumValue(value: TDIFValue<any>): TDIFValue<number> | null {
+export function implNumValue(
+  value: GenusValue<any>
+): GenusValue<number> | null {
   if (isNumValue(value)) {
     return value;
   }
@@ -58,8 +74,8 @@ export function implNumValue(value: TDIFValue<any>): TDIFValue<number> | null {
 }
 
 export function isFloatValue(
-  value: TDIFValue<any>
-): value is TDIFValue<number> {
+  value: GenusValue<any>
+): value is GenusValue<number> {
   let parsed = JSON.parse(value.value);
   return (
     typeof parsed === "number" &&
@@ -69,8 +85,8 @@ export function isFloatValue(
 }
 
 export function implFloatValue(
-  value: TDIFValue<any>
-): TDIFValue<number> | null {
+  value: GenusValue<any>
+): GenusValue<number> | null {
   if (isFloatValue(value)) {
     return value;
   }
@@ -78,15 +94,15 @@ export function implFloatValue(
 }
 
 export function isBoolValue(
-  value: TDIFValue<any>
-): value is TDIFValue<boolean> {
+  value: GenusValue<any>
+): value is GenusValue<boolean> {
   let parsed = JSON.parse(value.value);
   return typeof parsed === "boolean" && value.type === "bool";
 }
 
 export function implBoolValue(
-  value: TDIFValue<any>
-): TDIFValue<boolean> | null {
+  value: GenusValue<any>
+): GenusValue<boolean> | null {
   if (isBoolValue(value)) {
     return value;
   }
@@ -94,8 +110,8 @@ export function implBoolValue(
 }
 
 export function isTrueValue(
-  value: TDIFValue<any>
-): value is TDIFValue<boolean> {
+  value: GenusValue<any>
+): value is GenusValue<boolean> {
   let parsed = JSON.parse(value.value);
   return (
     typeof parsed === "boolean" && value.type === "bool" && parsed === true
@@ -103,8 +119,8 @@ export function isTrueValue(
 }
 
 export function implTrueValue(
-  value: TDIFValue<any>
-): TDIFValue<boolean> | null {
+  value: GenusValue<any>
+): GenusValue<boolean> | null {
   if (isTrueValue(value)) {
     return value;
   }
@@ -112,8 +128,8 @@ export function implTrueValue(
 }
 
 export function isFalseValue(
-  value: TDIFValue<any>
-): value is TDIFValue<boolean> {
+  value: GenusValue<any>
+): value is GenusValue<boolean> {
   let parsed = JSON.parse(value.value);
   return (
     typeof parsed === "boolean" && value.type === "bool" && parsed === true
@@ -121,8 +137,8 @@ export function isFalseValue(
 }
 
 export function implFalseValue(
-  value: TDIFValue<any>
-): TDIFValue<boolean> | null {
+  value: GenusValue<any>
+): GenusValue<boolean> | null {
   if (isFalseValue(value)) {
     return value;
   }
@@ -130,8 +146,8 @@ export function implFalseValue(
 }
 
 export function isArrayValue<T>(
-  value: TDIFValue<any>
-): value is TDIFValue<T[]> {
+  value: GenusValue<any>
+): value is GenusValue<T[]> {
   let parsed = JSON.parse(value.value);
   return (
     typeof parsed === "object" &&
@@ -141,8 +157,8 @@ export function isArrayValue<T>(
 }
 
 export function implArrayValue<T>(
-  value: TDIFValue<any>
-): TDIFValue<T[]> | null {
+  value: GenusValue<any>
+): GenusValue<T[]> | null {
   if (isArrayValue<T>(value)) {
     return value;
   }

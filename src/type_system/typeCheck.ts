@@ -1,5 +1,5 @@
 import { exit } from "process";
-import { TDIFType, TDIFValue } from "../types";
+import { GenusType, GenusValue } from "../types";
 import {
   isArrayValue,
   isBoolValue,
@@ -12,8 +12,8 @@ import {
   isUntValue,
 } from "./typeGuard";
 
-export default function typeCheck(value: TDIFValue<any>) {
-  function typeError(T: TDIFType) {
+export default function typeCheck(value: GenusValue<any>) {
+  function typeError(T: GenusType) {
     console.error(`\x1b[31munexpected type for ${value.value}: ${T}\x1b[0m`);
     exit(1);
   }

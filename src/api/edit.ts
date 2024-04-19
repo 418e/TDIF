@@ -1,6 +1,6 @@
 import { writeFileSync } from "fs";
 import typeCheck from "../type_system/typeCheck";
-import { FileMeta, TDIFValue } from "../types";
+import { FileMeta, GenusValue } from "../types";
 /**
  * @param {FileMeta} file
  * file you would like to edit
@@ -12,9 +12,9 @@ import { FileMeta, TDIFValue } from "../types";
  *
  * @example
  * ```ts
- * import {read, edit} from "tdif";
+ * import {read, edit} from "genus-format";
  *
- * const file = read("user.tdif");
+ * const file = read("user.gen");
  * edit(file, "name", "luke");
  * ```
  *
@@ -31,7 +31,7 @@ export default function edit(file: FileMeta, key: string, newValue: any): void {
 
   const newContent = Object.entries(data)
     .map(
-      ([k, v]: [string, TDIFValue<any>]) =>
+      ([k, v]: [string, GenusValue<any>]) =>
         `${v.type} ${k} = ${
           typeof v.value === "string" ? `"${v.value}"` : v.value
         };`
