@@ -1,15 +1,16 @@
 {
   "name": "genus-format",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "typed data interchange and serialization format",
+  "main": "index.js",
   "scripts": {
-    "start": "tsc src/index.ts --outDir out --watch",
-    "build": "tsc src/index.ts --outDir out"
+    "start": "tsc src/index.ts --watch --declaration --outDir .",
+    "build": "tsc src/index.ts --declaration --outDir ."
   },
   "author": "418e",
   "license": "GPL-2.0 license",
   "devDependencies": {
-    "typescript": "^5.4.5", 
+    "typescript": "^5.4.5",
     "@types/node": "^20.12.7"
   }
 }

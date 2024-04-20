@@ -10,7 +10,9 @@ Genus Format is a data interchange and serialization format designed with type-s
 
 ## Installation
 
-soon
+```bash
+npm install genus-format
+```
 
 ## Examples
 

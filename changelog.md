@@ -1,4 +1,10 @@
-# v0.0.7 - 16/04/2024
+# v0.1.0 - 19/04/2024
+
+- released javascript version
+- published npm package
+- fixed minor bugs
+
+# v0.0.7 - 19/04/2024
 
 - added object type
 
